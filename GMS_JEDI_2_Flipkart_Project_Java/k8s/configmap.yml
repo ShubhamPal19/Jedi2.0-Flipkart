@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flipfit-configmap
+data:
+  configmap.yml: |-
+    server:
+      applicationConnectors:
+        - type: http
+          port: 5000
+
+
+      requestLog:
+        appenders:
+          - type: console
+            timeZone: IST

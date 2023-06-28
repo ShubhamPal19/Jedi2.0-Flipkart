@@ -1,0 +1,11 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 5000
+
+
+  requestLog:
+    appenders:
+      - type: console
+        timeZone: IST
+

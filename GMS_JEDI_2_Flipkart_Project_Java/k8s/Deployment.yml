@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flipfit-depl
+  labels:
+    app: flipfit
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: flipfit
+  template: # Pod spec
+    metadata:
+      labels:
+        app: flipfit
+    spec:
+      volumes:
+        - name: flipfit-volume
+          configMap:
+           name: flipfit-configmap
+      containers:
+        - name: flipfit-container
+          image: test:0.0.2
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: flipfit-volume
+              mountPath: "/etc/config"
+          ports:
+            - containerPort: 5000 # this does not actually expose a port, this is just for documentation (similar to EXPOSE in dockerfile)
+
+
+
+
+
